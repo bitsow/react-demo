@@ -1,0 +1,24 @@
+html {
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    font-size: 13px;
+    line-height: 20px;
+    margin:0px;
+    background-color:rgb(48, 48, 48);
+    color:rgb(255,255,255)
+}
+
+.box1 {
+    text-align: center;
+    padding-top: 200px;
+}
+
+#r_box {
+    min-height:750px;
+    background: url('./images/Dark_background_1920x1080.png') center top no-repeat;
+    background-size: cover;
+    margin-right: -18px;
+}
+
