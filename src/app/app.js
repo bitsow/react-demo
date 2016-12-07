@@ -5,7 +5,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 import { Provider } from 'react-redux'
 import Main from './containers/main' // Our custom react component
 import configureStore from './configureStore'
-import {fetchUserIfNeeded} from './actions/indexAction'
+import {login} from './actions/indexAction'
 import Overview from './components/Overview';
 import Alerts from './components/Alerts';
 import Setting from './components/Setting';
@@ -16,7 +16,7 @@ injectTapEventPlugin();
 
 const store = configureStore()
 console.log(store.getState())
-store.dispatch(fetchUserIfNeeded())
+store.dispatch(login())
 ReactDOM.render(
     <Provider store={store}>
         <Router history={hashHistory} >

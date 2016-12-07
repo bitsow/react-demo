@@ -18,6 +18,7 @@ class Main extends Component {
 
     // closeLeftMenu = () => this.setState({open: false, marginLeft:'0px'});
     render() {
+        this.props.getUserInfo();
         return (
             <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
 
@@ -39,7 +40,7 @@ class Main extends Component {
 Main.propTypes = {
     logged: PropTypes.bool.isRequired,
     marginLeft: PropTypes.string.isRequired,
-    // domLoad: PropTypes.func.isRequired
+    getUserInfo: PropTypes.func.isRequired
 };
 
 export default Main;

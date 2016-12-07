@@ -2,7 +2,6 @@ const initialState = {
     openState: false,
     marginLeft: '0px',
     openLeftMenu: false,
-    logged: true
 };
 
 const Main = (state = initialState, action) => {

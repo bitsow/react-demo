@@ -15,49 +15,74 @@ const requestUser = () => {
 const receiveUser = (json)=> {
     return {
         type: RECEIVE_USER,
-        userInfo: json.data.children.map(child => child.data),
+        userInfo: json,
         receivedAt: Date.now()
+    }
+};
+
+export const SET_TOKEN = 'SET_TOKEN';
+const setToken = (token, logged)=> {
+    return {
+        type: SET_TOKEN,
+        token: token,
+        logged: logged
     }
 };
 
 const shouldFetchUser = (state)=> {
     const userInfo = state.User.userInfo;
-    if (!userInfo.uid) {
+    if (!userInfo._id && userInfo['X-NXG-Token'] != '') {
         return true;
     } else {
         return false;
     }
 };
 
-const fetchUser =() =>{
+const fetchUser =(token) =>{
     return (dispatch) => {
         dispatch(requestUser());
         return callApi(
-            'POST',
+            'GET',
             'user',
-            {'_id':'5846566172fe44e31f34f6aa'}
+            {},
+            token,
         )
-            .then((response) => {
-                console.log(response);
-                if (response.status >= 400) {
-                    throw new Error("Bad response from server");
-                }
-                return response.json();
-            })
-            .then((json) => {
-                console.log(json);
-                dispatch(receiveUser(json));
-            })
+            .then(
+                (json) => {
+                    dispatch(receiveUser(json));
+                },
+                (json)=>{
+                    console.log("err");
+                    console.log(json)
+                })
     }
 };
 
+const getToken = (state) => {
+  return state.User.userInfo['X-NXG-Token'] ? state.User.userInfo['X-NXG-Token'] : '';
+};
+
 export function fetchUserIfNeeded () {
-    console.log(222)
     return (dispatch,getState) => {
-        console.log(333)
         if(shouldFetchUser(getState())) {
-            return dispatch(fetchUser())
+            var token = getToken(getState());
+            return dispatch(fetchUser(token))
         }
+    }
+}
+
+export function login() {
+    return (dispatch) => {
+        return callApi('GET','login')
+            .then(
+                (json) => {
+                    return dispatch(setToken(json.token, true))
+                },
+                (json) => {
+                    console.log('err');
+                    console.log(json);
+                }
+            )
     }
 }
 

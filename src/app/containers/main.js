@@ -1,19 +1,22 @@
 import { connect } from 'react-redux'
 import Main from '../components/Main'
-import {requestUser,receiveUser} from '../actions/indexAction'
+import {fetchUserIfNeeded} from '../actions/indexAction'
 
 
 function mapStateToProps(state) {
     return {
-        logged: state.Main.logged,
+        logged: state.User.logged,
         marginLeft: state.Main.marginLeft
     }
 }
 
-
-
-
+function mapDispatchToProps(dispatch) {
+    return {
+        getUserInfo: () => dispatch(fetchUserIfNeeded())
+    }
+}
 const main = connect(
     mapStateToProps,
+    mapDispatchToProps
 )(Main);
 export default main;
