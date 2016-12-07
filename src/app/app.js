@@ -15,7 +15,7 @@ injectTapEventPlugin();
 // For more details see: https://facebook.github.io/react/docs/top-level-api.html#react.render
 
 const store = configureStore()
-console.log(store.getState())
+// console.log(store.getState())
 store.dispatch(login())
 ReactDOM.render(
     <Provider store={store}>

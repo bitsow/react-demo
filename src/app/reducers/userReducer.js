@@ -16,10 +16,11 @@ const User = (state = initialState, action) => {
                 didInvalidate: false
             } );
         case RECEIVE_USER:
+            sessionStorage.token = action.userInfo['X-NXG-Token'];
             return Object.assign({}, state, {
                 isFetching: false,
                 didInvalidate: true,
-                userInfo: action.userInfo,
+                userInfo: action.userInfo
             });
         case SET_TOKEN:
             sessionStorage.token = action.token;

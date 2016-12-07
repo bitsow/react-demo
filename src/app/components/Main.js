@@ -10,6 +10,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Header from '../containers/header';
 import LeftMenu from '../containers/leftMenu';
 import Footer from '../components/Footer';
+import Login from '../components/Login'
 
 
 
@@ -26,7 +27,7 @@ class Main extends Component {
                 <Header />
                 <LeftMenu />
                 <div id="r_box" style={{marginLeft: this.props.marginLeft}}>
-                    {this.props.children }
+                    {this.props.logged? this.props.children : <Login /> }
 
                 </div>
                 <Footer marginLeft={this.props.marginLeft} />

@@ -57,7 +57,7 @@ SelectableList = wrapState(SelectableList);
 class LeftMenu extends Component {
     render() {
         return (
-            <Drawer open={this.props.openLeftMenu}>
+            <Drawer open={this.props.openLeftMenu && this.props.logged}>
                 <AppBar
                     onTouchTap={this.props.onCloseLeftMenuClick}
                     label="Nexusguard"
@@ -75,6 +75,7 @@ class LeftMenu extends Component {
 }
 LeftMenu.PropTypes = {
     openLeftMenu: PropTypes.bool.isRequired,
+    logged: PropTypes.bool.isRequired,
     onCloseLeftMenuClick: PropTypes.func.isRequired
 };
 

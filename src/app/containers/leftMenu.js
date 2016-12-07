@@ -6,6 +6,7 @@ import {closeLeftMenuAction} from '../actions/indexAction'
 function mapStateToProps(state) {
     return {
         openLeftMenu: state.Main.openLeftMenu,
+        logged: state.User.logged
     }
 }
 

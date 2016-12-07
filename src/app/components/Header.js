@@ -20,8 +20,8 @@ class Header extends Component {
         return (
             <AppBar
                 title={<span style={styles.title}>Nexusguard</span>}
-                iconElementLeft={<IconButton ><NavigationMenu /></IconButton>}
-                iconElementRight={this.props.logged ? <Logged /> : <Login />}
+                iconElementLeft={this.props.logged ? <IconButton ><NavigationMenu /></IconButton> : <span></span>}
+                iconElementRight={this.props.logged ? <Logged {...this.props} /> : <Login />}
                 onLeftIconButtonTouchTap={this.props.onOpenLeftMenuClick}
             />
         )
@@ -45,14 +45,13 @@ Login.muiName
 const Logged = (props) => (
     <IconMenu
         style={styles.iconStyle}
-        {...props}
         iconButtonElement={
-      <IconButton><MoreVertIcon /></IconButton>
-    }
+            <IconButton><MoreVertIcon /></IconButton>
+        }
         targetOrigin={{horizontal: 'right', vertical: 'top'}}
         anchorOrigin={{horizontal: 'right', vertical: 'top'}}
     >
-        <MenuItem primaryText="User" />
+        <MenuItem primaryText={props.userInfo.name ? props.userInfo.name : 'User'} />
         <MenuItem primaryText="Help" />
         <MenuItem primaryText="Sign out" />
     </IconMenu>
