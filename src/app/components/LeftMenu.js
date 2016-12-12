@@ -60,8 +60,8 @@ class LeftMenu extends Component {
             <Drawer open={this.props.openLeftMenu && this.props.logged}>
                 <AppBar
                     onTouchTap={this.props.onCloseLeftMenuClick}
-                    label="Nexusguard"
-                    title={<span style={styles.title}>Nexusguard</span>}
+                    label="Bitsow"
+                    title={<span style={styles.title}>Bitsow</span>}
                     iconElementLeft={<IconButton><ActionHome /></IconButton>}
                 />
                 <SelectableList defaultValue={1}>

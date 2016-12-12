@@ -19,7 +19,7 @@ class Header extends Component {
         // const {logged, openLeftMenu} = this.props;
         return (
             <AppBar
-                title={<span style={styles.title}>Nexusguard</span>}
+                title={<span style={styles.title}>Bitsow</span>}
                 iconElementLeft={this.props.logged ? <IconButton ><NavigationMenu /></IconButton> : <span></span>}
                 iconElementRight={this.props.logged ? <Logged {...this.props} /> : <Login />}
                 onLeftIconButtonTouchTap={this.props.onOpenLeftMenuClick}
