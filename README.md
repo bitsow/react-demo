@@ -1,4 +1,4 @@
-# NXG-ALERTS-WEB
+# React-Demo-Bitsow
 
 ## 在项目文件夹中你可以运行以下命令
 
